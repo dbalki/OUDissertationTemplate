@@ -1,0 +1,35 @@
+\chapter{CITATIONS}%This should be in all capital letters, "all caps!"
+
+
+To create your chapter 3, find the file named ``03Chapter.tex'' and open it in a latex editor. 
+Then, replace all of this text. 
+This file cannot be compiled directly; compiling this text and figures into a pdf is achevied by compiling the `OUThesis.tex' file.
+
+\section{Bibtex}
+
+This LaTeX template uses bibtex to generate the bibliography. 
+The Bibtex file for this thesis is named `references.bib'. 
+This file must be populated by sources relevant to your dissertation. 
+How to do this? 
+If you open the file, you can see that the entries are formatted as shown in \autoref{bibtex}.
+This formatting can be downloaded directly from Google Scholar, see \color{blue}\href{https://libguides.usask.ca/c.php?g=218034&p=1445751}{this website}\color{black}. %https://libguides.usask.ca/c.php?g=218034&p=1445751
+
+\begin{figure}[bp]
+\begin{lstlisting}
+@book{jeffrey2007table,
+  title={Table of integrals, series, and products, 7th ed.},
+  author={Jeffrey, Alan and Zwillinger, Daniel},
+  year={2007},
+  publisher={Elsevier},
+	note = {Equation 2.325.13}
+})
+\end{lstlisting}
+\caption[Coding figure; Hello world in python]{Coding figure; Hello world in python}
+\label{bibtex}
+\end{figure}
+
+
+\section{Citations}
+To cite something, simply use the `\textbackslash cite\{\}' command\cite{sadiku2007fundamentals}. 
+One can cite other things easily\cite{pain2015introduction, jeffrey2007table}
+

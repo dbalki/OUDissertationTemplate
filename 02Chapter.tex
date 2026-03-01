@@ -1,0 +1,106 @@
+
+\chapter{BACKGROUND}%This should be in all capital letters, "all caps!"
+
+\section{Using this template}
+
+To create your chapter 2, find the file named ``02Chapter.tex'' and open it in a latex editor. 
+Then, replace all of this text. 
+This file cannot be compiled directly; compiling this text and figures into a pdf is achevied by compiling the `OUThesis.tex' file.
+
+
+\section{Figures}
+
+Figures are an important part of any dissertation. 
+\autoref{figureExample2} is an example figure. 
+The caption in the code contains two parts, coded as ``\textbackslash caption[]\{\}''. 
+Text placed between the square brackets [] goes to the `list of figures' in the front matter. 
+Text placed between the curly brackets \{\} appears on the page with the figure. 
+
+%\begin{figure}[tbp]
+%\centering
+%\includegraphics{figures/VectorBitmapExample}
+%\caption[Title of figure that appears in the table of contents.]{Title of figure that appears in the text. 
+%This figure is from Wikipedia, and shows the difference between a vector image and a bitmap. Note that if you zoom in all the way, the resolution is still perfect, even though the file size is just 46~kB}
+%\label{figureExample2}
+%\end{figure}
+
+To get the figure to work properly, it should be the right size. 
+Firstly, the width of the figure should be 6 inches or less. 
+This will keep it out of the margins. 
+The height of the figure + the height of the caption altogether must be small enough to fit within the margins.
+This should be monitored manually. 
+
+It is ideal to generate figures as vector images in pdf format. 
+This will ensure infinite resolution with a small file size. 
+If you are unsure what a vector image is, please research this on the internet. 
+Also, when generating figures, make sure that all text in the figures uses a 12 point times font. 
+
+OU formatting guidelines dictate that figures should be placed within a page of its first mention. 
+How can this be achieved with LaTex?
+Firstly, try putting the code for the figure just after it is mentioned. 
+This is done with \autoref{figureExample1}.
+Generally, LaTex is able to put the figure in a good location automatically.
+Compile the file and see if its location is good. 
+
+%\begin{figure}[tbp]
+%\centering
+%\includegraphics{figures/OregonRoute224}
+%\caption[Oregon Route 224]{Oregon Route 224, vector image is 6 inches wide, and copied from wikipedia.}
+%\label{figureExample1}
+%\end{figure}
+
+Very rarely, the location is not good.
+In this case, the location can be forced. 
+As the document will change continually, only make these changes immediately before the first formatting review. 
+To force the location, the text in the code [tbp] should be changed. 
+If it is changed to [b] that forces the figure to the bottom of the page. 
+If it is changed to [p] that forces the figure to have its own page. 
+
+
+
+
+\section{Code Figures}
+
+There are times when code, specifically programming code, will be included in this thesis. 
+Perhaps in the methods chapter? 
+Perhaps elsewhere? 
+As an example, see \autoref{code}.
+\begin{figure}[bp]
+\begin{lstlisting}[language=Python]
+# This prints Hello, world!
+print('Hello, world!')
+print('Hello, friends!')
+\end{lstlisting}
+\caption[Coding figure; Hello world in python]{Coding figure; Hello world in python}
+\label{code}
+\end{figure}
+This may require some changes or trouble shooting.
+
+\section{Tables}
+
+In latex, tables are efficient but also sort of a pain. 
+\autoref{TableExample} shows an example of a table. 
+There a many ways to format tables; please find internet resources. 
+The only issue is that care must be taken to make sure your table is less than 6 inches wide. 
+One tool that can help with this is ``\textbackslash parbox[]\{\}''.
+
+\begin{table}[tbp]
+\centering
+\caption{Performance metrics for spectrum analysis}
+\begin{tabular}{l c c l }
+\toprule
+{\bfseries Performance Metric} & {\bfseries Symbol} & {\bfseries Base Units} & {\bfseries Brief Description}\\
+\midrule
+Frequency accuracy & ~ & Hz & \parbox[t]{54 mm}{Accuracy with which the input\\signal frequency is identified.}\\
+~ & ~ & ~ & \\
+Scanning bandwidth & $\delta f_c$ & Hz & \parbox[t]{54 mm}{Total bandwidth to be\\analyzed.}\\
+~ & ~ & ~ & \\
+Scan rate & $\rho$ & Hz/s & \parbox[t]{54 mm}{The rate at which spectrum\\analysis is performed.}\\
+\bottomrule
+\label{TableExample}
+\end{tabular}
+\end{table}
+
+
+
+

@@ -1,0 +1,130 @@
+\chapter{BASIC EDITING}%This should be in all capital letters, "all caps!"
+
+\section{Using this template}
+
+To create your chapter 1, find the file named ``01Chapter.tex'' and open it in a latex editor. 
+Then, replace all of this text. 
+This file cannot be compiled directly; compiling this text and figures into a pdf is achieved by compiling the `OUThesis.tex' file.
+Please try to compile a duplicate of this pdf before starting. 
+Pay particular attention to making the ``List of Abbreviations'' in \autoref{AcronymSetion}
+
+\section{Text Editing}
+
+In Microsoft Word, typing occurs in paragraphs. 
+For proof reading, locating the mistakes in their paragraph and correcting them in Microsoft Word is relatively easy. 
+In LaTeX, however, correcting the mistakes during proof reading can at times a little difficult. 
+To make it easier, it is suggested to write each sentence on its own line. 
+This way, when there is an error to correct, one can simply look at the first word of the sentence to locate the text that should be changed.
+
+\section{The OUThesis.tex File}
+
+As stated earlier, to compile your dissertation, the `OUThesis.tex' file should be compiled. 
+When starting, there are a number of things that should be adjusted in that file when work is begun.
+There are comments in the OUThesis.tex file to explain this. 
+
+The preamble is the portion of the file from top to `\textbackslash begin{document}'. The following should be adjusted in the preamble:
+\begin{itemize}
+	\item documentclass: If you are a PhD student writing your dissertation, the document class does not need to be changed.
+If you are a masters student, the document class should be changed to read `\textbackslash documentclass[thesis, bookmarks]\{grizz\_thesis\}'.
+
+	\item includeonly: The `\textbackslash includeonly{}' command can be uncommented to compile a subset of your document.
+
+	\item usepackage: If you wish to use additional packages, they can be added to the preamble. 
+The packages already in use can be found in the `grizz\_thesis.cls' file.
+
+	\item custom macros: For a long thesis, it may be a good idea to use macros to make typing it in easier. 
+For example, $\om$ and $\vst$ have macros defined.
+
+	\item newacronym: The `\textbackslash newacronym' part of the preamble will be discussed in \autoref{AcronymSetion}.
+
+	\item year: The year in your document can be changed in the preamble.
+\end{itemize}
+
+Between `\textbackslash begin\{document\}' and `\textbackslash end\{document\}' in the `OUThesis.tex' file, there are some things that need to be changed. 
+The main thing is to enter the title, name, degree, and committee names. 
+Besides this, the additional chapters and appendices should be uncommented as your thesis grows.
+
+
+
+\section{Equations}
+
+The beauty of latex is that if is excellent for formatting equations, and once you have the syntax memorized, equations are fast to type. 
+For example, the equation $\alpha(x) = \beta\delta y\sqrt{\epsilon}$ is typed inline between two \$ signs. 
+If instead an equation should be numbered, it might be best to code it as:
+\begin{equation} \alpha(x) = \beta\delta y\sqrt{\epsilon} \label{first}\end{equation}
+To have an equation without numbering, simply use the following:
+\[\alpha(x) = \beta\delta y\sqrt{\epsilon}\]
+%This is how equations are entered.
+
+How, one might ask, should an equation be referenced in the text? 
+The easy way is to use the included package, ``hyperref''. 
+This allows you to refer to \autoref{first} and \autoref{second} and \autoref{third}.
+As will be shown in the next section, ``\textbackslash autoref\{\}'' also works with figures and tables and the like. 
+Please note that despite their black color, hyperref generates hyperlinks in the pdf output. 
+Thus, if you click on this: \autoref{first} your pdf viewer might take you back a page. 
+
+If you want a piecewise equation with a single number, here is an example.
+\begin{equation}
+ r(t) = \begin{cases} A \cos(\pi \rho t^2 + \om t + \psi_r) &-\tfrac{T}{2}\leq t\leq\tfrac{T}{2} \\
+ 0 &\text{otherwise}\end{cases} \label{sr1}
+\end{equation}
+
+
+If instead the pieces should be referenced individually, try:
+
+\begin{subequations}
+\label{mainVOltage}
+\begin{numcases}{v(t) = }
+-\tfrac{1}{2} I\Delta R \cos( \psi) & when injection locked ~~~~~~~~\label{second}\\
+-\tfrac{1}{2} I\Delta R \cos(\pi \rho t^2 + \om t + \psi) & otherwise \label{third}
+\end{numcases}
+\end{subequations}
+
+\section{Quotations}
+
+When you have a long quotation, it may require a quotation block. 
+Please refer to the OU thesis formatting guidelines to determine when a block is required. 
+
+\begin{quote}
+It was actually Bart Cameron's error and you'll have to understand about Bart Cameron. 
+He's the sheriff at Twin Gulch, Idaho, and I'm his deputy. 
+Bart Cameron is an impatient man and he gets most impatient when he has to work up his income tax. 
+You see, besides being sheriff, he also owns and runs the general store, he's got some shares in a sheep ranch, he does a bit of assay work, he's got a kind of pension for being a disabled veteran (bad knee) and a few other things like that. 
+Naturally, it makes his tax figures complicated.
+\end{quote}
+This quote was taken from an Issav Assimov story, \textit{The Dead Past} \cite{asimov1956dead}. 
+
+
+\section{Acronyms\label{AcronymSetion}}
+
+In the front matter, there is a page called ``List of Abbreviations''. 
+How was this generated? 
+
+First, it is important to discuss the `glossaries' package.
+The glossaries package is included in the grizz\_thesis.cls file. 
+This allows the use of the \textbackslash gls\{\} and \textbackslash glspl\{\} commands. 
+In the preamble of the `OUThesis.tex' file, there is an line \textbackslash newacronym\{fpga\}\{FPGA\}\{Field-Programmable Gate Array\}. 
+This can be referenced in singular with the code \textbackslash gls\{fpga \}, and with this command it will display as \gls{fpga}. 
+As can be seen, the first time \textbackslash gls\{fpga \} is used it displays the full name and the acronym in parenthesis. 
+The second time this command is used, it will just say \gls{fpga}.
+If is should be plural, it must use the code \textbackslash glspl\{\}. 
+Then, it will be displayed as \glspl{fpga}.
+
+Once the glossaries package is being used correctly, the List of Abbreviations can be generated. 
+This is a little complicated - it requires that perl be installed on your computer. 
+If you are using Windows, add the directory of perl to the path. 
+After this, run the command `makeglossaries OUThesis' inside the directory of your latex files. 
+This will generate the files required to populate the list of abbreviations.
+If you are using windows, there is a batch file `makeGloss.bat' that can be used with a mouse in Windows.
+The command `makeglossaries.exe' should also be in the path. 
+As I used MiKTeX, it was found in the MiKTeX directory.
+There may be some trouble shooting associated with this. 
+
+Once all these steps are done, the List of Abbreviations should appear correctly in the generated pdf file.
+
+%\begin{figure}[tbp]
+%\centering
+%\includegraphics{figures/NayaritMexico}
+%\caption[First Chapter Figure]{First Chapter Figure. PDF vector image is six inches wide, and copied from Wikipedia. Figures are discussed in Chapter 2.}
+%\label{firstChapterFigureLabel}
+%\end{figure}
